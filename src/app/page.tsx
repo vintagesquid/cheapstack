@@ -42,9 +42,27 @@ export default async function Home() {
           </p>
         </div>
 
-        <CrudShowcase />
+        <div className="grid grid-cols-2 gap-8">
+          <CrudShowcase />
+          <Posts />
+        </div>
       </div>
     </main>
+  );
+}
+
+async function Posts() {
+  const allPosts = await api.post.getAll();
+
+  return (
+    <div className="space-y-2">
+      <h1 className="text-2xl underline underline-offset-4">Posts</h1>
+      <div>
+        {allPosts.map((post) => (
+          <div key={post.id}>{post.name}</div>
+        ))}
+      </div>
+    </div>
   );
 }
 
