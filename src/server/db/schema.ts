@@ -1,28 +1,39 @@
-// Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
+import { sqliteTableCreator } from "drizzle-orm/sqlite-core";
 
-import { sql } from "drizzle-orm";
-import { index, int, sqliteTableCreator, text } from "drizzle-orm/sqlite-core";
+export const createTable = sqliteTableCreator((name) => name);
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
-export const createTable = sqliteTableCreator((name) => `cheapstack_${name}`);
+export const technologyCategories = createTable("technology_category", (d) => ({
+  id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
+  name: d.text({ length: 256 }),
+}));
 
-export const posts = createTable(
-  "post",
-  {
-    id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    name: text("name", { length: 256 }),
-    createdAt: int("created_at", { mode: "timestamp" })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: int("updatedAt", { mode: "timestamp" }),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+export const technologies = createTable("technology", (d) => ({
+  id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
+  provider: d.text({ length: 256 }),
+  hasFreeTier: d.integer({ mode: "boolean" }),
+  categoryId: d
+    .integer({ mode: "number" })
+    .references(() => technologyCategories.id, {
+      onDelete: "set null",
+      onUpdate: "cascade",
+    }),
+}));
+
+export const stacks = createTable("stack", (d) => ({
+  id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
+  name: d.text({ length: 256 }),
+}));
+
+export const technologyStacks = createTable("technology_stack", (d) => ({
+  id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
+  technologyId: d
+    .integer({ mode: "number" })
+    .references(() => technologies.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+  stackId: d.integer({ mode: "number" }).references(() => stacks.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }),
+}));
