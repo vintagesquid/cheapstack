@@ -10,13 +10,13 @@ export const technologyCategories = createTable("technology_category", (d) => ({
 export const technologies = createTable("technology", (d) => ({
   id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
   provider: d.text({ length: 256 }),
-  hasFreeTier: d.integer({ mode: "boolean" }),
   categoryId: d
     .integer({ mode: "number" })
     .references(() => technologyCategories.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
+  freeTier: d.text(),
 }));
 
 export const stacks = createTable("stack", (d) => ({
