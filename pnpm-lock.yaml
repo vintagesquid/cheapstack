@@ -55,8 +55,8 @@ importers:
         specifier: ^4.0.15
         version: 4.1.11
       '@types/node':
-        specifier: ^20.14.10
-        version: 20.19.1
+        specifier: ^22.16.0
+        version: 22.16.0
       '@types/react':
         specifier: ^19.0.0
         version: 19.1.8
@@ -842,8 +842,8 @@ packages:
     peerDependencies:
       typescript: '>=5.7.2'
 
-  '@types/node@20.19.1':
-    resolution: {integrity: sha512-jJD50LtlD2dodAEO653i3YF04NWak6jN3ky+Ri3Em3mGR39/glWiboM/IePaRbgwSfqM1TpGXfAg8ohn/4dTgA==}
+  '@types/node@22.16.0':
+    resolution: {integrity: sha512-B2egV9wALML1JCpv3VQoQ+yesQKAmNMBIAY7OteVrikcOcAkWm+dGL6qpeCktPjAv6N1JLnhbNiqS35UpFyBsQ==}
 
   '@types/react-dom@19.1.6':
     resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
@@ -1836,7 +1836,7 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  '@types/node@20.19.1':
+  '@types/node@22.16.0':
     dependencies:
       undici-types: 6.21.0
 
@@ -1850,7 +1850,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 20.19.1
+      '@types/node': 22.16.0
 
   buffer-from@1.1.2: {}
 
