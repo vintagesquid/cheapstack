@@ -1,4 +1,4 @@
-import { HydrateClient, api } from "~/trpc/server";
+import { api, HydrateClient } from "~/trpc/server";
 import Splash from "./_components/splash";
 
 export default async function Home() {
