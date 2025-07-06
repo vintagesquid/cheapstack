@@ -13,6 +13,7 @@ export const env = createEnv({
       .default("development"),
     TURSO_DATABASE_URL: z.string().url(),
     TURSO_AUTH_TOKEN: z.string(),
+    FIRECRAWL_API_KEY: z.string()
   },
 
   /**
@@ -34,6 +35,8 @@ export const env = createEnv({
 
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
     TURSO_DATABASE_URL: process.env.TURSO_DATABASE_URL,
+
+    FIRECRAWL_API_KEY: process.env.FIRECRAWL_API_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
