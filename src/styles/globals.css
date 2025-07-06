@@ -3,4 +3,21 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --navbar-height: 0px;
+  --color-primary: #79a471;
+
+  --color-base: #0d0d0d;
+  --color-base-100: #1b1b1b;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-base text-white;
+  }
+
+  main {
+    @apply bg-gradient-to-b from-base to-base-100;
+  }
 }
