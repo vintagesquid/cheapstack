@@ -13,7 +13,7 @@ export const env = createEnv({
       .default("development"),
     TURSO_DATABASE_URL: z.string().url(),
     TURSO_AUTH_TOKEN: z.string(),
-    FIRECRAWL_API_KEY: z.string()
+    FIRECRAWL_API_KEY: z.string(),
   },
 
   /**
