@@ -1,8 +1,10 @@
 import { api, HydrateClient } from "~/trpc/server";
 import Splash from "./_components/splash";
+import StackList from "./_components/stack-list";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
+  const stacks = await api.stack.getStacks();
 
   return (
     <HydrateClient>
@@ -16,7 +18,7 @@ export default async function Home() {
         </section>
 
         <section id="stacks">
-          <h1 className="text-2xl">stacks</h1>
+          <StackList stacks={stacks} />
         </section>
       </div>
     </HydrateClient>
