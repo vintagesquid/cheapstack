@@ -1,4 +1,5 @@
 import { api, HydrateClient } from "~/trpc/server";
+import Scraper from "./_components/scraper";
 import Splash from "./_components/splash";
 import StackList from "./_components/stack-list";
 
@@ -20,6 +21,8 @@ export default async function Home() {
         <section id="stacks">
           <StackList stacks={stacks} />
         </section>
+
+        <Scraper />
       </div>
     </HydrateClient>
   );

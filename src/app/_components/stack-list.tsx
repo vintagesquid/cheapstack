@@ -9,7 +9,7 @@ type StackListProps = {
 const StackList: FC<StackListProps> = ({ stacks }) => {
   return (
     <div>
-      <h1>Stack list</h1>
+      <h1 className="text-3xl">Stack list</h1>
 
       {stacks.map((stack) => {
         return (

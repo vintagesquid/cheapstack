@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import Scraper from "./scraper";
 
 const Splash: FC = () => {
   return (
@@ -13,8 +12,6 @@ const Splash: FC = () => {
           Find the cheapest stack for your next project.
         </p>
       </div>
-
-      <Scraper />
     </section>
   );
 };
