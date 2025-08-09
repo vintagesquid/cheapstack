@@ -25,7 +25,7 @@ export default function RootLayout({
       <body>
         <TRPCReactProvider>
           <Navigation />
-          <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-base to-base-100 text-white">
+          <main className="flex min-h-screen flex-col items-center justify-center bg-base px-4 text-white">
             {children}
           </main>
         </TRPCReactProvider>
