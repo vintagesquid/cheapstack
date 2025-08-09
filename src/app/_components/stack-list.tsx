@@ -8,15 +8,9 @@ type StackListProps = {
 
 const StackList: FC<StackListProps> = ({ stacks }) => {
   return (
-    <div>
-      <h1 className="text-3xl">Stack list</h1>
-
+    <div className="grid grid-cols-3 gap-4">
       {stacks.map((stack) => {
-        return (
-          <div key={stack.id}>
-            <StackCard stack={stack} />
-          </div>
-        );
+        return <StackCard key={stack.id} stack={stack} />;
       })}
     </div>
   );
