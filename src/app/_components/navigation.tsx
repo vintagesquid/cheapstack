@@ -12,7 +12,7 @@ const Navigation: FC = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="#stacks">Stacks</Link>
+            <Link href="/#stacks">Stacks</Link>
           </li>
         </ul>
       </nav>
