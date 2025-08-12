@@ -37,7 +37,6 @@ export const stackRouter = createTRPCRouter({
           eq(technologyCategories.id, technologies.categoryId),
         )
         .where(sql`${stacks.id} IN ${subQuery}`);
-        ;
 
       const stackMap = new Map<number, Stack>();
 
