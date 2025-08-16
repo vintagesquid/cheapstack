@@ -1,16 +1,13 @@
-import type { InferSelectModel } from "drizzle-orm";
 import type {
-  stacks,
-  technologies,
-  technologyCategories,
+  SelectStack,
+  SelectTechnology,
+  SelectTechnologyCategory,
 } from "~/server/db/schema";
 
-export type Stack = InferSelectModel<typeof stacks> & {
+export type Stack = SelectStack & {
   technologies: Technology[];
 };
 
-export type Technology = InferSelectModel<typeof technologies> & {
-  categories: InferSelectModel<typeof technologyCategories>[];
+export type Technology = SelectTechnology & {
+  category: SelectTechnologyCategory;
 };
-
-export type TechnologyCategory = InferSelectModel<typeof technologyCategories>;
