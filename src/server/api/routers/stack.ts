@@ -1,7 +1,6 @@
 import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import type { Stack } from "~/lib/types";
-
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import {
   stacks,
@@ -20,6 +19,7 @@ export const stackRouter = createTRPCRouter({
         .select({
           stackId: stacks.id,
           stackName: stacks.name,
+          stackCategoryId: stacks.categoryId,
           technologyId: technologies.id,
           technologyProvider: technologies.provider,
           technologyFreeTier: technologies.freeTier,
@@ -45,11 +45,14 @@ export const stackRouter = createTRPCRouter({
           stackMap.set(row.stackId, {
             id: row.stackId,
             name: row.stackName,
+            categoryId: row.stackCategoryId,
             technologies: [],
           });
         }
 
-        if (!row.technologyId) continue;
+        if (!row.technologyId) {
+          continue;
+        }
 
         const stack = stackMap.get(row.stackId);
 
@@ -59,25 +62,21 @@ export const stackRouter = createTRPCRouter({
 
         let tech = stack.technologies.find((t) => t.id === row.technologyId);
 
-        if (!tech) {
+        if (!tech && row.technologyCategoryId) {
           tech = {
             id: row.technologyId,
             provider: row.technologyProvider,
             freeTier: row.technologyFreeTier,
             categoryId: row.technologyCategoryId,
-            categories: [],
+            category: {
+              id: row.technologyCategoryId,
+              name: row.technologyCategoryName,
+            }
           };
           stack.technologies = [...stack.technologies, tech];
         }
-
-        if (
-          row.technologyCategoryId &&
-          !tech.categories.some((c) => c.id === row.technologyCategoryId)
-        ) {
-          tech.categories = [
-            ...tech.categories,
-            { id: row.technologyCategoryId, name: row.technologyCategoryName },
-          ];
+        if (tech) {
+          stack.technologies = [...stack.technologies, tech];
         }
       }
 
