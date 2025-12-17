@@ -5,7 +5,7 @@ import Splash from "./_components/splash";
 import StackList from "./_components/stack-list";
 
 export default async function Home() {
-  const stacks = await api.stack.getStacks({ limit: 9 });
+  const stacks = await api.stack.getStacks({ limit: 3 });
 
   return (
     <div className="container flex flex-col items-center justify-center gap-12 px-4">
@@ -20,7 +20,7 @@ export default async function Home() {
 
         <div className="text-center">
           <Link href={"/stacks"} className="rounded border px-2 py-1">
-            Browse more stacks...
+            Browse stacks
           </Link>
         </div>
       </section>
